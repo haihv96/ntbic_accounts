@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App;
+use App\Repositories\SsoTicket\SsoTicketInterface;
+use App\Repositories\SsoTicket\SsoTicketRepository;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +26,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        App::bind(SsoTicketInterface::class, SsoTicketRepository::class);
     }
 }

@@ -13,6 +13,13 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::namespace('Api')->group(function () {
+    Route::middleware('jwt.auth')->group(function () {
+        Route::post('user', function (Request $request) {
+            return $request->user();
+        });
+    });
+
+    Route::post('/sso_ticket/assign', 'AssignSsoTicketController@assignTicket');
+    Route::post('/sso_ticket/assign_token', 'AssignSsoTicketController@assignAccessToken');
 });
