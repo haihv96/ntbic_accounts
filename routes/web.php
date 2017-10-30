@@ -21,11 +21,11 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('sso/login', 'SsoController@login')->name('sso.login_form');
-Route::post('sso/make_request', 'SsoController@makeRequest')->name('sso.login');
-Route::get('sso/set_session/{sso_ticket_secret}', 'SsoController@setSession');
+Route::post('sso/make-request', 'SsoController@makeRequest')->name('sso.login');
+Route::get('sso/set-session/{ssoTicketSecret}', 'SsoController@setSession');
 
 ## ROOT ROUTE
-Route::get('/sso_ticket/authenticate/{ssoTicketSecret}', 'SsoTicketController@authenticateTicket')
+Route::get('/sso-ticket/authenticate/{ssoTicketSecret}', 'SsoTicketController@authenticateTicket')
     ->name('sso_ticket.authenticate');
-Route::post('/sso_ticket/update_auth_ticket', 'SsoTicketController@updateAuthTicket')
+Route::post('/sso-ticket/update-auth-ticket', 'SsoTicketController@updateAuthTicket')
     ->name('sso_ticket.update');
