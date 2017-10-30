@@ -22,7 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('sso/login', 'SsoController@login')->name('sso.login_form');
 Route::post('sso/make_request', 'SsoController@makeRequest')->name('sso.login');
-Route::get('sso/set_cookie/{sso_ticket_secret}', 'SsoController@setCookie');
+Route::get('sso/set_session/{sso_ticket_secret}', 'SsoController@setSession');
 
 ## ROOT ROUTE
 Route::get('/sso_ticket/authenticate/{ssoTicketSecret}', 'SsoTicketController@authenticateTicket')

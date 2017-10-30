@@ -28,7 +28,7 @@ class SsoController extends Controller
         return redirect($redirect_url);
     }
 
-    public function setCookie($ssoTicketSecret)
+    public function setSession($ssoTicketSecret)
     {
         $http = new GuzzleHttp\Client;
         $request_access_token = $http->post(config('sso.root_server.url.assign_token'), [
@@ -43,7 +43,7 @@ class SsoController extends Controller
         if ($response['error']) {
             return redirect()->route('sso.login_form');
         } else {
-            Cookie::queue('access_token', $response['data']['access_token'], config('sso.token.cookie_ttl'));
+            session(['access_token' => $response['data']['access_token']]);
             return redirect($response['data']['redirect_url']);
         }
     }
