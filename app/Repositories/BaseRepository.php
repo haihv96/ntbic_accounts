@@ -13,12 +13,7 @@ abstract class BaseRepository implements BaseInterface
 
     public function __construct($model)
     {
-        $this->model = $model->newQuery();
-    }
-
-    public function newQuery($model)
-    {
-        $this->model = $model->newQuery();
+        $this->model = $model;
     }
 
     public function all()
