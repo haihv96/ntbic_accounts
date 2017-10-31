@@ -17,24 +17,14 @@ class CreateRolePermissionTable extends Migration
         Schema::create('permissions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('source_id')->unsigned();
-
-            $table->foreign('source_id')
-                ->references('id')
-                ->on('sources')
-                ->onDelete('cascade');
+            $table->string('source');
             $table->timestamps();
         });
 
         Schema::create('roles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('source_id')->unsigned();
-
-            $table->foreign('source_id')
-                ->references('id')
-                ->on('sources')
-                ->onDelete('cascade');
+            $table->string('source');
             $table->timestamps();
         });
 

@@ -5,6 +5,10 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use App\Models\Permission;
+use App\Models\Role;
 
 class User extends Authenticatable
 {
@@ -29,4 +33,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function permissions(): BelongsToMany
+    {
+        return $this->belongsToMany(Permission,'role_has_permissions');
+    }
+
+    public function roles(): BelongsToMany
+    {
+        return $this->belongsToMany(Role,'role_has_permissions');
+    }
 }

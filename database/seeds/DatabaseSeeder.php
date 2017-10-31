@@ -13,11 +13,12 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             UserSeeder::class,
-            SpatiePermissionSeeder::class,
-            SpatieRoleSeeder::class,
-            AssignPermissionUserSeeder::class,
-            AssignPermissionRoleSeeder::class,
-            AssignRoleUserSeeder::class
+            TestSeeder::class
+            // SpatiePermissionSeeder::class,
+            // SpatieRoleSeeder::class,
+            // AssignPermissionUserSeeder::class,
+            // AssignPermissionRoleSeeder::class,
+            // AssignRoleUserSeeder::class
         ]);
     }
 }
