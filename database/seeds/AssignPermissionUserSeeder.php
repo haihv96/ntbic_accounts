@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Repositories\SpatiePermission\SpatiePermissionInterface;
 use App\Repositories\User\UserInterface;
+use App\User;
 
 class AssignPermissionUserSeeder extends Seeder
 {
@@ -26,7 +27,7 @@ class AssignPermissionUserSeeder extends Seeder
 
     public function run()
     {
-        $this->userRepository->find(1)->givePermissionTo('ntbic_database store chuyen_gia');
-        $this->userRepository->find(2)->givePermissionTo('ntbic_database destroy chuyen_gia');
+        User::find(1)->givePermissionTo('ntbic_database store chuyen_gia');
+        User::find(2)->givePermissionTo('ntbic_database destroy chuyen_gia');
     }
 }
