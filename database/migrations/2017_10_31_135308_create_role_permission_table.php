@@ -17,12 +17,24 @@ class CreateRolePermissionTable extends Migration
         Schema::create('permissions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->integer('source_id')->unsigned();
+
+            $table->foreign('source_id')
+                ->references('id')
+                ->on('sources')
+                ->onDelete('cascade');
             $table->timestamps();
         });
 
         Schema::create('roles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->integer('source_id')->unsigned();
+
+            $table->foreign('source_id')
+                ->references('id')
+                ->on('sources')
+                ->onDelete('cascade');
             $table->timestamps();
         });
 
@@ -77,40 +89,6 @@ class CreateRolePermissionTable extends Migration
             $table->primary(['permission_id', 'role_id']);
 
         });
-
-        Schema::create('roles_in_module', function (Blueprint $table) {
-            $table->integer('role_id')->unsigned();
-            $table->integer('module_id')->unsigned();
-
-            $table->foreign('role_id')
-                ->references('id')
-                ->on('roles')
-                ->onDelete('cascade');
-
-            $table->foreign('module_id')
-                ->references('id')
-                ->on('modules')
-                ->onDelete('cascade');
-
-            $table->primary(['role_id', 'module_id']);
-        });
-
-        Schema::create('permissions_in_module', function (Blueprint $table) {
-            $table->integer('permission_id')->unsigned();
-            $table->integer('module_id')->unsigned();
-
-            $table->foreign('permission_id')
-                ->references('id')
-                ->on('permissions')
-                ->onDelete('cascade');
-
-            $table->foreign('module_id')
-                ->references('id')
-                ->on('modules')
-                ->onDelete('cascade');
-
-            $table->primary(['permission_id', 'module_id']);
-        });
     }
 
     /**
@@ -120,12 +98,10 @@ class CreateRolePermissionTable extends Migration
      */
     public function down()
     {
-        Schema::drop('user_has_permissions');
-        Schema::drop('user_has_roles');
-        Schema::drop('role_has_permissions');
-        Schema::drop('permissions_in_module');
-        Schema::drop('roles_in_module');
-        Schema::drop('roles');
-        Schema::drop('permissions');
+        Schema::dropIfExists('user_has_permissions');
+        Schema::dropIfExists('user_has_roles');
+        Schema::dropIfExists('role_has_permissions');
+        Schema::dropIfExists('roles');
+        Schema::dropIfExists('permissions');
     }
 }

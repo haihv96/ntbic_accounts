@@ -13,9 +13,9 @@ class CreateModuleTable extends Migration
      */
     public function up()
     {
-        Schema::create('modules', function (Blueprint $table) {
+        Schema::create('sources', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('name')->unique();
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateModuleTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('modules');
+        Schema::dropIfExists('sources');
     }
 }
