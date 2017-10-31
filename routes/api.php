@@ -7,7 +7,7 @@ Route::namespace('Api')->group(function () {
         Route::post('check-authenticate', 'AuthenticateUserController@index');
 
         Route::group(['prefix' => 'role'], function () {
-            Route::get('get-role-names', 'RoleController@getRoleNames');
+            Route::post('get-role-names', 'RoleController@getRoleNames');
             Route::post('has-role', 'RoleController@hasRole');
         });
 

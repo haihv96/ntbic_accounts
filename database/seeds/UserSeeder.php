@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Eloquent\Model;
+use App\Repositories\User\UserInterface;
 
 class UserSeeder extends Seeder
 {
@@ -10,15 +10,22 @@ class UserSeeder extends Seeder
      *
      * @return void
      */
+    protected $userRepository;
+
+    public function __construct(UserInterface $userRepository)
+    {
+        $this->userRepository = $userRepository;
+    }
+
     public function run()
     {
-        DB::table('users')->insert([
+        $this->userRepository->insert([
             'name' => 'hai',
             'email' => 'hai.hp.96@gmail.com',
             'password' => bcrypt('123456')
         ]);
 
-        DB::table('users')->insert([
+        $this->userRepository->insert([
             'name' => 'hai1',
             'email' => 'hai.hp.961@gmail.com',
             'password' => bcrypt('123456')

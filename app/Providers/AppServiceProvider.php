@@ -3,6 +3,10 @@
 namespace App\Providers;
 
 use App;
+
+use App\Repositories\User\UserInterface;
+use App\Repositories\User\UserRepository;
+
 use App\Repositories\SsoTicket\SsoTicketInterface;
 use App\Repositories\SsoTicket\SsoTicketRepository;
 
@@ -33,6 +37,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        App::bind(UserInterface::class, UserRepository::class);
         App::bind(SsoTicketInterface::class, SsoTicketRepository::class);
         App::bind(SpatiePermissionInterface::class, SpatiePermissionRepository::class);
         App::bind(SpatieRoleInterface::class, SpatieRoleRepository::class);

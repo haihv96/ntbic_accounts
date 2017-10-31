@@ -21,8 +21,10 @@ class SpatieRoleSeeder extends Seeder
     public function run()
     {
         $this->spatieRoleRepository->insert([
-            ['guard_name' => 'database_ntbic', 'name' => 'admin'],
-            ['guard_name' => 'database_ntbic', 'name' => 'moderator'],
+            ['name' => 'ntbic_database admin'],
+            ['name' => 'ntbic_database moderator'],
+            ['name' => 'ntbic_home admin'],
+            ['name' => 'ntbic_home moderator'],
         ]);
     }
 }

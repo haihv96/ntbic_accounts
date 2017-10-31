@@ -6,12 +6,13 @@ use Illuminate\Http\Request;
 
 class RoleController extends BaseController
 {
-    public function getRoleNames()
+    public function getRoleNames(Request $request)
     {
+        $guardName = $request->get('guard_name');
         return response()->json([
             'error' => false,
             'message' => null,
-            'data' => $this->currentUser->getRoleNames()
+            'data' => $request->user()->getRoleNames()
         ], 200);
     }
 
@@ -22,7 +23,7 @@ class RoleController extends BaseController
         return response()->json([
             'error' => false,
             'message' => null,
-            'data' => $this->currentUser->hasRole($role, $guardName)
+            'data' => $request->user()->hasRole($role, $guardName)
         ], 200);
     }
 }

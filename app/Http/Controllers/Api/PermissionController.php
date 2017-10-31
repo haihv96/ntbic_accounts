@@ -6,30 +6,30 @@ use Illuminate\Http\Request;
 
 class PermissionController extends BaseController
 {
-    public function getDirectPermissions()
+    public function getDirectPermissions(Request $request)
     {
         return response()->json([
             'error' => false,
             'message' => null,
-            'data' => $this->currentUser->getDirectPermissions()
+            'data' => $request->user()->getDirectPermissions()
         ], 200);
     }
 
-    public function getPermissionsViaRoles()
+    public function getPermissionsViaRoles(Request $request)
     {
         return response()->json([
             'error' => false,
             'message' => null,
-            'data' => $this->currentUser->getPermissionsViaRoles()
+            'data' => $request->user()->getPermissionsViaRoles()
         ], 200);
     }
 
-    public function getAllPermissions()
+    public function getAllPermissions(Request $request)
     {
         return response()->json([
             'error' => false,
             'message' => null,
-            'data' => $this->currentUser->getAllPermissions()
+            'data' => $request->user()->getAllPermissions()
         ], 200);
     }
 
@@ -41,7 +41,7 @@ class PermissionController extends BaseController
         return response()->json([
             'error' => false,
             'message' => null,
-            'data' => $this->currentUser->hasPermissionTo($permission, $guardName)
+            'data' => $request->user()->hasPermissionTo($permission, $guardName)
         ], 200);
     }
 }
