@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 
 Route::namespace('Api')->group(function () {
     Route::middleware('jwt.auth')->group(function () {
-        Route::post('check-authenticate', 'AuthenticateUserController@index');
+        Route::get('check-authenticate', 'AuthenticateUserController@index');
 
         Route::group(['prefix' => 'role'], function () {
             Route::post('get-role-names', 'RoleController@getRoleNames');

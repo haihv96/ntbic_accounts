@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Repositories\SpatieRole\SpatieRoleInterface;
 use App\Repositories\SpatiePermission\SpatiePermissionInterface;
+use Spatie\Permission\Models\Role;
 
 class AssignPermissionRoleSeeder extends Seeder
 {
@@ -26,7 +27,7 @@ class AssignPermissionRoleSeeder extends Seeder
 
     public function run()
     {
-        $this->spatieRoleRepository->findBy('name', 'ntbic_database admin')
+        Role::findByName('ntbic_database admin')
             ->givePermissionTo([
                 'ntbic_database read chuyen_gia',
                 'ntbic_database store chuyen_gia',
@@ -34,7 +35,7 @@ class AssignPermissionRoleSeeder extends Seeder
                 'ntbic_database destroy chuyen_gia'
             ]);
 
-        $this->spatieRoleRepository->findBy('name', 'ntbic_database moderator')
+        Role::findByName('ntbic_database moderator')
             ->givePermissionTo([
                 'ntbic_database read chuyen_gia',
                 'ntbic_database store chuyen_gia',

@@ -6,11 +6,11 @@ use Illuminate\Http\Request;
 
 class AuthenticateUserController extends BaseController
 {
-    public function index(){
+    public function index(Request $request){
         return response()->json([
             'status' => 200,
             'message' => null,
-            'data' => $this->currentUser
+            'data' => $request->user()
         ], 200);
     }
 }
