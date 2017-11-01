@@ -36,11 +36,112 @@ class User extends Authenticatable
 
     public function permissions(): BelongsToMany
     {
-        return $this->belongsToMany(Permission,'role_has_permissions');
+        return $this->belongsToMany('App\Models\Permission','user_has_permissions');
     }
 
     public function roles(): BelongsToMany
     {
-        return $this->belongsToMany(Role,'role_has_permissions');
+        return $this->belongsToMany('App\Models\Role','user_has_roles');
+    }
+
+    public function hasDirectPermissionTo($source, $permission) {
+        if(is_string($permission)) {
+            $permission = Permission::findInSourceByName($source, $permission);
+        }
+
+        if (!$permission) {
+            return false;
+        }
+
+        return $this->permissions->contains('id',$permission->id);
+    }
+
+    public function hasPermissionViaRole($source, $permission) {
+        return $this->hasDirectPermission($source, $permission) || $this->hasPermissionViaRole($source, $permission);
+    }
+
+    public function hasPermissionTo($source, $permission) {
+        return $this->hasRole($source, $permission->roles->where('source', $source));
+    }
+
+    public function givePermissionTo($source, $permission) {
+        if(is_string($permission)) {
+            $permission = Permission::findInSourceByName($source, $permission);
+        }
+
+        $this->permissions()->save($permission);
+        return $this;
+    }
+
+    public function revokePermissionTo($source, $permission) {
+        if(is_string($permission)) {
+            $permission = Permission::findInSourceByName($source, $permission);
+        }
+
+        $this->permissions()->detach($permission);
+    }
+
+    public function hasRole($source, $roles) {
+        if (is_string($roles) && false !== strpos($roles, '|')) {
+            $roles = $this->convertPipeToArray($roles);
+        }
+        
+        if(is_string($roles)) {
+            $role = Role::findInSourceByName($source, $roles);
+            return $this->roles->contains('id',$role->id);
+        }
+
+        if (is_array($roles)) {
+            foreach ($roles as $role) {
+                if ($this->hasRole($source, $role)) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+    }
+
+    public function assignRole($source, $role) {
+        if(is_string($role)) {
+            $role = Role::findInSourceByName($source, $role);
+        }
+
+        $this->roles()->save($role);
+        return $this;
+    }
+
+    public function removeRole($source, $role) {
+        if(is_string($role)) {
+            $role = Role::findInSourceByName($source, $role);
+        }
+
+        $this->role()->detach($permission);
+    }
+
+    public function getDirectPermissions($source)
+    {
+        return $this->permissions->where('source',$source)->pluck('name');
+    }
+
+    public function getRoleNames($source)
+    {
+        return $this->roles->where('source',$source)->pluck('name');
+    }
+
+    public function getPermissionsViaRoles($source)
+    {
+        return $this->load('roles', 'roles.permissions')
+            ->roles->where('source',$source)->flatMap(function ($role) {
+                return $role->permissions;
+            })->sort()->values();
+    }
+
+    public function getAllPermissions($source)
+    {
+        return $this->permissions->where('source',$source)
+            ->merge($this->getPermissionsViaRoles($source))
+            ->sort()
+            ->values();
     }
 }

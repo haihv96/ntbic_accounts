@@ -16,6 +16,12 @@ use App\Repositories\SpatiePermission\SpatiePermissionRepository;
 use App\Repositories\SpatieRole\SpatieRoleInterface;
 use App\Repositories\SpatieRole\SpatieRoleRepository;
 
+use App\Repositories\Permission\PermissionInterface;
+use App\Repositories\Permission\PermissionRepository;
+
+use App\Repositories\Role\RoleInterface;
+use App\Repositories\Role\RoleRepository;
+
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 
@@ -42,5 +48,7 @@ class AppServiceProvider extends ServiceProvider
         App::bind(SsoTicketInterface::class, SsoTicketRepository::class);
         App::bind(SpatiePermissionInterface::class, SpatiePermissionRepository::class);
         App::bind(SpatieRoleInterface::class, SpatieRoleRepository::class);
+        App::bind(PermissionInterface::class, PermissionRepository::class);
+        App::bind(RoleInterface::class, RoleRepository::class);
     }
 }

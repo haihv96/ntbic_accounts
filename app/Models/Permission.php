@@ -4,8 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use App\Models\Role;
-use App\User;
 
 class Permission extends Model
 {
@@ -13,11 +11,15 @@ class Permission extends Model
 
     public function roles(): BelongsToMany
     {
-        return $this->belongsToMany(Role,'role_has_permissions');
+        return $this->belongsToMany('App\Models\Role','role_has_permissions');
     }
 
     public function users(): BelongsToMany
     {
-        return $this->belongsToMany(User,'user_has_permissions');
+        return $this->belongsToMany('App\User','user_has_permissions');
+    }
+
+    public static function findInSourceByName($source, $name) {
+    	return static::where('name', $name)->where('source', $source)->first();
     }
 }
