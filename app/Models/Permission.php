@@ -19,7 +19,7 @@ class Permission extends Model
         return $this->belongsToMany('App\User','user_has_permissions');
     }
 
-    public static function findInSourceByName($source, $name) {
+    public static function findPermission($source, $name) {
     	return static::where('name', $name)->where('source', $source)->first();
     }
 }

@@ -1,9 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Repositories\SpatieRole\SpatieRoleInterface;
-use App\Repositories\SpatiePermission\SpatiePermissionInterface;
-use Spatie\Permission\Models\Role;
+use App\Models\Role;
 
 class AssignPermissionRoleSeeder extends Seeder
 {
@@ -13,32 +11,16 @@ class AssignPermissionRoleSeeder extends Seeder
      * @return void
      */
 
-    protected $spatieRoleRepository;
-    protected $spatiePermissionRepository;
-
-    public function __construct(
-        SpatieRoleInterface $spatieRoleRepository,
-        SpatiePermissionInterface $spatiePermissionRepository
-    )
-    {
-        $this->spatieRoleRepository = $spatieRoleRepository;
-        $this->spatiePermissionRepository = $spatiePermissionRepository;
-    }
-
     public function run()
     {
-        Role::findByName('ntbic_database admin')
-            ->givePermissionTo([
-                'ntbic_database read chuyen_gia',
-                'ntbic_database store chuyen_gia',
-                'ntbic_database update chuyen_gia',
-                'ntbic_database destroy chuyen_gia'
-            ]);
+        Role::findRole('ntbic_home', 'admin')->givePermissionTo('ntbic_home', 'read tin_tuc');
+        Role::findRole('ntbic_home', 'admin')->givePermissionTo('ntbic_home', 'store tin_tuc');
+        Role::findRole('ntbic_home', 'admin')->givePermissionTo('ntbic_home', 'update tin_tuc');
+        Role::findRole('ntbic_home', 'admin')->givePermissionTo('ntbic_home', 'destroy tin_tuc');
 
-        Role::findByName('ntbic_database moderator')
-            ->givePermissionTo([
-                'ntbic_database read chuyen_gia',
-                'ntbic_database store chuyen_gia',
-            ]);
+        Role::findRole('ntbic_database', 'admin')->givePermissionTo('ntbic_database', 'read chuyen_gia');
+        Role::findRole('ntbic_database', 'admin')->givePermissionTo('ntbic_database', 'store chuyen_gia');
+        Role::findRole('ntbic_database', 'admin')->givePermissionTo('ntbic_database', 'update chuyen_gia');
+        Role::findRole('ntbic_database', 'admin')->givePermissionTo('ntbic_database', 'destroy chuyen_gia');
     }
 }

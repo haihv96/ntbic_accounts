@@ -14,8 +14,6 @@ class User extends Authenticatable
 {
 
     use Notifiable;
-    use HasRoles;
-
     /**
      * The attributes that are mass assignable.
      *
@@ -46,7 +44,7 @@ class User extends Authenticatable
 
     public function hasDirectPermissionTo($source, $permission) {
         if(is_string($permission)) {
-            $permission = Permission::findInSourceByName($source, $permission);
+            $permission = Permission::findPermission($source, $permission);
         }
 
         if (!$permission) {
@@ -66,7 +64,7 @@ class User extends Authenticatable
 
     public function givePermissionTo($source, $permission) {
         if(is_string($permission)) {
-            $permission = Permission::findInSourceByName($source, $permission);
+            $permission = Permission::findPermission($source, $permission);
         }
 
         $this->permissions()->save($permission);
@@ -75,7 +73,7 @@ class User extends Authenticatable
 
     public function revokePermissionTo($source, $permission) {
         if(is_string($permission)) {
-            $permission = Permission::findInSourceByName($source, $permission);
+            $permission = Permission::findPermission($source, $permission);
         }
 
         $this->permissions()->detach($permission);
@@ -87,7 +85,7 @@ class User extends Authenticatable
         }
         
         if(is_string($roles)) {
-            $role = Role::findInSourceByName($source, $roles);
+            $role = Role::findRole($source, $roles);
             return $this->roles->contains('id',$role->id);
         }
 
@@ -104,7 +102,7 @@ class User extends Authenticatable
 
     public function assignRole($source, $role) {
         if(is_string($role)) {
-            $role = Role::findInSourceByName($source, $role);
+            $role = Role::findRole($source, $role);
         }
 
         $this->roles()->save($role);
@@ -113,7 +111,7 @@ class User extends Authenticatable
 
     public function removeRole($source, $role) {
         if(is_string($role)) {
-            $role = Role::findInSourceByName($source, $role);
+            $role = Role::findRole($source, $role);
         }
 
         $this->role()->detach($permission);

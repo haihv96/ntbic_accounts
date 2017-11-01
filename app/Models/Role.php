@@ -20,13 +20,13 @@ class Role extends Model
         return $this->belongsToMany('App\User','user_has_roles');
     }
 
-    public static function findInSourceByName($source, $name) {
+    public static function findRole($source, $name) {
     	return static::where('name', $name)->where('source', $source)->first();
     }
 
     public function hasPermissionTo($source, $permission) {
         if(is_string($permission)) {
-            $permission = Permission::findInSourceByName($source, $permission);
+            $permission = Permission::findPermission($source, $permission);
         }
 
         return $this->permissions->contains('id',$permission->id);
@@ -34,7 +34,7 @@ class Role extends Model
 
     public function givePermissionTo($source, $permission) {
         if(is_string($permission)) {
-            $permission = Permission::findInSourceByName($source, $permission);
+            $permission = Permission::findPermission($source, $permission);
         }
 
         $this->permissions()->save($permission);
@@ -43,7 +43,7 @@ class Role extends Model
 
     public function revokePermissionTo($source, $permission) {
         if(is_string($permission)) {
-            $permission = Permission::findInSourceByName($source, $permission);
+            $permission = Permission::findPermission($source, $permission);
         }
 
         $this->permissions()->detach($permission);
