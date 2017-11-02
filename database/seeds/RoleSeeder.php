@@ -13,11 +13,24 @@ class RoleSeeder extends Seeder
 
     public function run()
     {
-        Role::insert([
-            ['source' => 'ntbic_home', 'name' => 'admin'],
-            ['source' => 'ntbic_home', 'name' => 'moderator'],
-            ['source' => 'ntbic_database', 'name' => 'admin'],
-            ['source' => 'ntbic_database', 'name' => 'moderator']
-        ]);
+        $ntbicDatabaseRoles = [
+            'admin', 'moderator'
+        ];
+
+        $ntbicHomeRoles = [
+            'admin', 'moderator'
+        ];
+
+        foreach ($ntbicDatabaseRoles as $ntbicDatabaseRole) {
+            Role::create([
+                'source' => 'ntbic_database', 'name' => $ntbicDatabaseRole
+            ]);
+        }
+
+        foreach ($ntbicHomeRoles as $ntbicHomeRole) {
+            Role::create([
+                'source' => 'ntbic_home', 'name' => $ntbicHomeRole
+            ]);
+        }
     }
 }

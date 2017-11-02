@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Repositories\User\UserInterface;
 use App\User;
 
 class AssignRoleUserSeeder extends Seeder
@@ -11,13 +10,6 @@ class AssignRoleUserSeeder extends Seeder
      *
      * @return void
      */
-
-    protected $userRepository;
-
-    public function __construct(UserInterface $userRepository)
-    {
-        $this->userRepository = $userRepository;
-    }
 
     public function run()
     {

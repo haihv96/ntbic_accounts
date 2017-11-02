@@ -10,19 +10,34 @@ class PermissionSeeder extends Seeder
      *
      * @return void
      */
-    protected $permissionRepository;
 
     public function run()
     {
-        Permission::insert([
-            ['source' => 'ntbic_home', 'name' => 'read tin_tuc'],
-            ['source' => 'ntbic_home', 'name' => 'store tin_tuc'],
-            ['source' => 'ntbic_home', 'name' => 'update tin_tuc'],
-            ['source' => 'ntbic_home', 'name' => 'destroy tin_tuc'],
-            ['source' => 'ntbic_database', 'name' => 'read chuyen_gia'],
-            ['source' => 'ntbic_database', 'name' => 'update chuyen_gia'],
-            ['source' => 'ntbic_database', 'name' => 'store chuyen_gia'],
-            ['source' => 'ntbic_database', 'name' => 'destroy chuyen_gia']
-        ]);
+        $actions = ['read', 'store', 'update', 'destroy'];
+        $ntbicDatabaseEntries = [
+            'chuyen_gia', 'doanh_nghiep',
+            'san_pham', 'de_tai_du_an_cac_cap',
+            'phat_minh', 'don_vi_uom_tao'
+        ];
+
+        $ntbicHomeEntries = [
+            'tin_tuc'
+        ];
+
+        foreach ($ntbicDatabaseEntries as $ntbicDatabaseEntry) {
+            foreach ($actions as $action) {
+                Permission::create([
+                    'source' => 'ntbic_database', 'name' => "$action $ntbicDatabaseEntry"
+                ]);
+            }
+        }
+
+        foreach ($ntbicHomeEntries as $ntbicHomeEntry) {
+            foreach ($actions as $action) {
+                Permission::create([
+                    'source' => 'ntbic_database', 'name' => "$action $ntbicHomeEntry"
+                ]);
+            }
+        }
     }
 }
