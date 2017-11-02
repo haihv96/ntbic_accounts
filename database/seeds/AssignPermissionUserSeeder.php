@@ -23,10 +23,11 @@ class AssignPermissionUserSeeder extends Seeder
 
     public function run()
     {
-        User::find(1)->givePermissionTo('ntbic_home', 'store tin_tuc');
-        User::find(1)->givePermissionTo('ntbic_home', 'destroy tin_tuc');
+        User::find(1)->givePermissionsTo('ntbic_home',
+            ['store tin_tuc', 'update tin_tuc', 'destroy tin_tuc']
+        );
 
-        User::find(2)->givePermissionTo('ntbic_database', 'store chuyen_gia');
-        User::find(2)->givePermissionTo('ntbic_database', 'destroy chuyen_gia');
+        User::find(2)->givePermissionsTo('ntbic_database',
+            ['store chuyen_gia', 'update chuyen_gia', 'destroy chuyen_gia']);
     }
 }

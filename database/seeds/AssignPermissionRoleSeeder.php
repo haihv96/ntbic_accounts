@@ -13,14 +13,10 @@ class AssignPermissionRoleSeeder extends Seeder
 
     public function run()
     {
-        Role::findRole('ntbic_home', 'admin')->givePermissionTo('ntbic_home', 'read tin_tuc');
-        Role::findRole('ntbic_home', 'admin')->givePermissionTo('ntbic_home', 'store tin_tuc');
-        Role::findRole('ntbic_home', 'admin')->givePermissionTo('ntbic_home', 'update tin_tuc');
-        Role::findRole('ntbic_home', 'admin')->givePermissionTo('ntbic_home', 'destroy tin_tuc');
+        Role::findRole('ntbic_home', 'admin')->givePermissionsTo('ntbic_home',
+            ['read tin_tuc', 'store tin_tuc', 'update tin_tuc', 'destroy tin_tuc']);
 
-        Role::findRole('ntbic_database', 'admin')->givePermissionTo('ntbic_database', 'read chuyen_gia');
-        Role::findRole('ntbic_database', 'admin')->givePermissionTo('ntbic_database', 'store chuyen_gia');
-        Role::findRole('ntbic_database', 'admin')->givePermissionTo('ntbic_database', 'update chuyen_gia');
-        Role::findRole('ntbic_database', 'admin')->givePermissionTo('ntbic_database', 'destroy chuyen_gia');
+        Role::findRole('ntbic_database', 'admin')->givePermissionsTo('ntbic_database',
+            ['read chuyen_gia', 'store chuyen_gia', 'update chuyen_gia', 'destroy chuyen_gia']);
     }
 }
