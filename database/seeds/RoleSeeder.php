@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\Role;
 
 class RoleSeeder extends Seeder
 {
@@ -12,24 +13,11 @@ class RoleSeeder extends Seeder
 
     public function run()
     {
-        DB::table('roles')->insert([
-        	'source' => 'ntbic_home',
-        	'name' => 'admin'
-        ]);
-
-        DB::table('roles')->insert([
-        	'source' => 'ntbic_home',
-        	'name' => 'moderator'
-        ]);
-
-        DB::table('roles')->insert([
-        	'source' => 'ntbic_database',
-        	'name' => 'admin'
-        ]);
-
-        DB::table('roles')->insert([
-        	'source' => 'ntbic_database',
-        	'name' => 'moderator'
+        Role::insert([
+            ['source' => 'ntbic_home', 'name' => 'admin'],
+            ['source' => 'ntbic_home', 'name' => 'moderator'],
+            ['source' => 'ntbic_database', 'name' => 'admin'],
+            ['source' => 'ntbic_database', 'name' => 'moderator']
         ]);
     }
 }

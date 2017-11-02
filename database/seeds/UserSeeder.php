@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\User;
 
 class UserSeeder extends Seeder
 {
@@ -12,16 +13,9 @@ class UserSeeder extends Seeder
 
     public function run()
     {
-        DB::table('users')->insert([
-            'name' => 'hai',
-            'email' => 'hai.hp.96@gmail.com',
-            'password' => bcrypt('123456')
-        ]);
-
-        DB::table('users')->insert([
-            'name' => 'hai1',
-            'email' => 'hai.hp.961@gmail.com',
-            'password' => bcrypt('123456')
+        User::insert([
+            ['name' => 'hai', 'email' => 'hai.hp.96@gmail.com', 'password' => bcrypt('123456')],
+            ['name' => 'hai1', 'email' => 'hai.hp.961@gmail.com', 'password' => bcrypt('123456')]
         ]);
     }
 }
