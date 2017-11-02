@@ -11,7 +11,7 @@ class PermissionController extends BaseController
         return response()->json([
             'error' => false,
             'message' => null,
-            'data' => $request->user()->getDirectPermissions()
+            'data' => $request->user()->getDirectPermissions($request->get('source'))
         ], 200);
     }
 
@@ -20,7 +20,7 @@ class PermissionController extends BaseController
         return response()->json([
             'error' => false,
             'message' => null,
-            'data' => $request->user()->getPermissionsViaRoles()
+            'data' => $request->user()->getPermissionsViaRoles($request->get('source'))
         ], 200);
     }
 
@@ -29,19 +29,29 @@ class PermissionController extends BaseController
         return response()->json([
             'error' => false,
             'message' => null,
-            'data' => $request->user()->getAllPermissions()
+            'data' => $request->user()->getAllPermissions($request->get('source'))
         ], 200);
     }
 
     public function hasPermissionTo(Request $request)
     {
-        $permission = $request->get('permission');
-        $guardName = $request->get('guard_name');
-
         return response()->json([
             'error' => false,
             'message' => null,
-            'data' => $request->user()->hasPermissionTo($permission, $guardName)
+            'data' => $request
+                ->user()
+                ->hasPermissionTo($request->get('source'), $request->get('name'))
+        ], 200);
+    }
+
+    public function hasAnyPermissionsTo(Request $request)
+    {
+        return response()->json([
+            'error' => false,
+            'message' => null,
+            'data' => $request
+                ->user()
+                ->hasAnyPermissionsTo($request->get('source'), $request->get('name'))
         ], 200);
     }
 }

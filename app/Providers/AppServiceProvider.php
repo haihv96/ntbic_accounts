@@ -10,12 +10,6 @@ use App\Repositories\User\UserRepository;
 use App\Repositories\SsoTicket\SsoTicketInterface;
 use App\Repositories\SsoTicket\SsoTicketRepository;
 
-use App\Repositories\SpatiePermission\SpatiePermissionInterface;
-use App\Repositories\SpatiePermission\SpatiePermissionRepository;
-
-use App\Repositories\SpatieRole\SpatieRoleInterface;
-use App\Repositories\SpatieRole\SpatieRoleRepository;
-
 use App\Repositories\Permission\PermissionInterface;
 use App\Repositories\Permission\PermissionRepository;
 
@@ -46,8 +40,6 @@ class AppServiceProvider extends ServiceProvider
     {
         App::bind(UserInterface::class, UserRepository::class);
         App::bind(SsoTicketInterface::class, SsoTicketRepository::class);
-        App::bind(SpatiePermissionInterface::class, SpatiePermissionRepository::class);
-        App::bind(SpatieRoleInterface::class, SpatieRoleRepository::class);
         App::bind(PermissionInterface::class, PermissionRepository::class);
         App::bind(RoleInterface::class, RoleRepository::class);
     }

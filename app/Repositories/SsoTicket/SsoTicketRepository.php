@@ -16,7 +16,7 @@ class SsoTicketRepository extends BaseRepository implements SsoTicketInterface
     {
         do {
             $sso_ticket_secret = str_random(190);
-        } while ($this->where("sso_ticket_secret", $sso_ticket_secret)->get()->isNotEmpty());
+        } while ($this->model->where('sso_ticket_secret', $sso_ticket_secret)->get()->isNotEmpty());
 
         return $sso_ticket_secret;
     }

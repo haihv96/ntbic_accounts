@@ -8,14 +8,14 @@ Route::namespace('Api')->group(function () {
 
         Route::group(['prefix' => 'role'], function () {
             Route::post('get-role-names', 'RoleController@getRoleNames');
-            Route::post('has-role', 'RoleController@hasRole');
+            Route::post('has-any-roles', 'RoleController@hasAnyRoles');
         });
 
         Route::group(['prefix' => 'permission'], function () {
-            Route::get('get-direct-permissions', 'PermissionController@getDirectPermissions');
-            Route::get('get_permissions_via_roles', 'PermissionController@getPermissionsViaRoles');
-            Route::get('get_all_permissions', 'PermissionController@getAllPermissions');
-            Route::post('has_permission_to', 'PermissionController@hasPermissionTo');
+            Route::post('get-direct-permissions', 'PermissionController@getDirectPermissions');
+            Route::post('get-permissions-via-roles', 'PermissionController@getPermissionsViaRoles');
+            Route::post('get-all-permissions', 'PermissionController@getAllPermissions');
+            Route::post('has-any-permissions-to', 'PermissionController@hasAnyPermissionsTo');
         });
     });
 

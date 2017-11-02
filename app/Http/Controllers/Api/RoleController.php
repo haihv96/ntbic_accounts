@@ -8,22 +8,20 @@ class RoleController extends BaseController
 {
     public function getRoleNames(Request $request)
     {
-        $guardName = $request->get('guard_name');
         return response()->json([
             'error' => false,
             'message' => null,
-            'data' => $request->user()->getRoleNames()
+            'data' => $request->user()->getRoleNames($request->get('source'))
         ], 200);
     }
 
-    public function hasRole(Request $request)
+    public function hasAnyRoles(Request $request)
     {
-        $guardName = $request->get('guard_name');
-        $role = $request->get('role');
         return response()->json([
             'error' => false,
             'message' => null,
-            'data' => $request->user()->hasRole($role, $guardName)
+            'data' => $request->user()
+                ->hasAnyRoles($request->get('source'), $request->get('name'))
         ], 200);
     }
 }

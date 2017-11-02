@@ -56,6 +56,7 @@ class User extends Authenticatable
             ->values();
     }
 
+    //can remove
     public function hasDirectPermission($source, $permission)
     {
         if (is_string($permission) && !$permission = Permission::findPermission($source, $permission)) {
@@ -65,12 +66,14 @@ class User extends Authenticatable
         return $this->permissions->contains('id', $permission->id);
     }
 
+    //can remove
     public function hasPermissionViaRole($source, $permission)
     {
         is_string($permission) ? $name = $permission : $name = $permission->name;
         return $this->getPermissionsViaRoles($source)->where('name', $permission)->isNotEmpty();
     }
 
+    //can remove
     public function hasPermissionTo($source, $permission)
     {
         return $this->hasDirectPermission($source, $permission) || $this->hasPermissionViaRole($source, $permission);
@@ -127,6 +130,7 @@ class User extends Authenticatable
         return $this->roles->where('source', $source)->pluck('name');
     }
 
+    //can remove
     public function hasRole($source, $role)
     {
         if (is_string($role) && !$role = Role::findRole($source, $role)) {
