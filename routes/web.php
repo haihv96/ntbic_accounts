@@ -20,9 +20,13 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
+## SSO ROUTE
 Route::get('sso/login', 'SsoController@login')->name('sso.login_form');
 Route::post('sso/make-request', 'SsoController@makeRequest')->name('sso.login');
 Route::get('sso/set-session/{ssoTicketSecret}', 'SsoController@setSession');
+Route::get('sso/logout', 'SsoController@destroySession');
+
 
 ## ROOT ROUTE
 Route::get('/sso-ticket/authenticate/{ssoTicketSecret}', 'SsoTicketController@authenticateTicket')

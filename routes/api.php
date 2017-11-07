@@ -21,4 +21,5 @@ Route::namespace('Api')->group(function () {
 
     Route::post('/sso-ticket/assign', 'AssignSsoTicketController@assignTicket');
     Route::post('/sso-ticket/assign-token', 'AssignSsoTicketController@assignAccessToken');
+    Route::post('/sso-logout/assign-next-url', 'SsoLogoutController@assignNextUrl');
 });

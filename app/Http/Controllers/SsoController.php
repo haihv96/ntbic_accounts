@@ -47,4 +47,24 @@ class SsoController extends Controller
             return redirect($response['data']['redirect_url']);
         }
     }
+
+    public function destroySession(Request $request)
+    {
+        $http = new GuzzleHttp\Client;
+        $request_access_token = $http->post(config('sso.root_server.url.logout'), [
+            'form_params' => [
+                'current_url' => config('app.url'),
+                'return_url' => $request->get('return_url')
+            ],
+            'http_errors' => false
+        ]);
+        $response = json_decode((string)$request_access_token->getBody(), true);
+
+        if ($response['error']) {
+            return redirect()->route('sso.login_form');
+        } else {
+            session(['access_token' => null]);
+            return redirect($response['data']['next_url']);
+        }
+    }
 }
