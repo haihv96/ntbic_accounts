@@ -33,3 +33,7 @@ Route::get('/sso-ticket/authenticate/{ssoTicketSecret}', 'SsoTicketController@au
     ->name('sso_ticket.authenticate');
 Route::post('/sso-ticket/update-auth-ticket', 'SsoTicketController@updateAuthTicket')
     ->name('sso_ticket.update');
+
+Route::group(['prefix' => 'management', 'namespace' => 'Management'], function () {
+    Route::resource('dashboards', 'DashboardController', ['only' => ['index']]);
+});
