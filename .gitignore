@@ -13,3 +13,5 @@ yarn-error.log
 /config/sso.php
 /config/database.php
 /storage/debugbar
+/public/css/app.css
+/public/js/app.js

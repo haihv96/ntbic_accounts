@@ -16,7 +16,7 @@ class User extends Authenticatable
     use Notifiable;
 
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'image'
     ];
 
     protected $hidden = [
@@ -70,7 +70,7 @@ class User extends Authenticatable
     public function hasPermissionViaRole($source, $permission)
     {
         is_string($permission) ? $name = $permission : $name = $permission->name;
-        return $this->getPermissionsViaRoles($source)->where('name', $permission)->isNotEmpty();
+        return $this->getPermissionsViaRoles($source)->where('name', $name)->isNotEmpty();
     }
 
     //can remove
