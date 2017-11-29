@@ -1,0 +1,18 @@
+<?php
+return [
+    'root_server' => [
+        'url' => [
+            'assign_ticket' => 'http://accounts.ntbic.dev/api/sso-ticket/assign',
+            'assign_token' => 'http://accounts.ntbic.dev/api/sso-ticket/assign-token',
+            'logout' => 'http://accounts.ntbic.dev/api/sso-logout/assign-next-url'
+        ]
+    ],
+    'urls_to_return_token' => [
+        'http://accounts.ntbic.dev/sso/set-session/',
+        'http://csdl.ntbic.dev/sso/set-session/',
+    ],
+    'urls_to_logout' => [
+        'http://accounts.ntbic.dev/sso/logout/',
+        'http://csdl.ntbic.dev/sso/logout/',
+    ]
+];
