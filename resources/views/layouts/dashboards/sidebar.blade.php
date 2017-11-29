@@ -25,7 +25,7 @@
             <li class="heading">
                 <h3 class="uppercase">Management</h3>
             </li>
-            <li class="nav-item  active open">
+            <li class="nav-item">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-diamond"></i>
                     <span class="title">Users</span>
@@ -34,11 +34,73 @@
                 </a>
                 <ul class="sub-menu">
                     <li class="nav-item  ">
-                        <a href="ui_colors.html" class="nav-link ">
+                        <a href="{{route('users.create')}}" class="nav-link ">
                             <span class="title">New</span>
                         </a>
-                        <a href="ui_colors.html" class="nav-link ">
+                    </li>
+                    <li>
+                        <a href="{{route('users.index')}}" class="nav-link ">
                             <span class="title">List users</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="icon-diamond"></i>
+                    <span class="title">Ntbic Home</span>
+                    <span class="selected"></span>
+                    <span class="arrow open"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item  ">
+                        <a href="{{url('management/ntbic-home/roles')}}" class="nav-link ">
+                            <span class="title">Roles</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{url('management/ntbic-home/permissions')}}" class="nav-link ">
+                            <span class="title">Permissions</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{url('management/ntbic-home/user-roles')}}" class="nav-link ">
+                            <span class="title">User Has Roles</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{url('management/ntbic-home/user-permissions')}}" class="nav-link ">
+                            <span class="title">User Has Permissions</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="icon-diamond"></i>
+                    <span class="title">Ntbic Database</span>
+                    <span class="selected"></span>
+                    <span class="arrow open"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item  ">
+                        <a href="{{url('management/ntbic-database/roles')}}" class="nav-link ">
+                            <span class="title">Roles</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{url('management/ntbic-database/permissions')}}" class="nav-link ">
+                            <span class="title">Permissions</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{url('management/ntbic-database/user-roles')}}" class="nav-link ">
+                            <span class="title">User Has Roles</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{url('management/ntbic-database/user-permissions')}}" class="nav-link ">
+                            <span class="title">User Has Permissions</span>
                         </a>
                     </li>
                 </ul>

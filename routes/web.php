@@ -18,9 +18,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-
 ## SSO ROUTE
 Route::get('sso/login', 'SsoController@login')->name('sso.login_form');
 Route::post('sso/make-request', 'SsoController@makeRequest')->name('sso.login');
@@ -36,4 +33,13 @@ Route::post('/sso-ticket/update-auth-ticket', 'SsoTicketController@updateAuthTic
 
 Route::group(['prefix' => 'management', 'namespace' => 'Management'], function () {
     Route::resource('dashboards', 'DashboardController', ['only' => ['index']]);
+    Route::resource('users', 'UserController', ['except' => ['show']]);
+
+    Route::group(['prefix' => '{source}'], function() {
+    	Route::resource('permissions', 'PermissionController', ['except' => 'show']);
+    	Route::resource('roles', 'RolePermissionController', ['except' => 'show']);
+
+    	Route::resource('user-roles', 'UserRoleController', ['only' => ['index', 'edit', 'update']]);
+    	Route::resource('user-permissions', 'UserPermissionController', ['only' => ['index', 'edit', 'update']]);
+    });
 });
