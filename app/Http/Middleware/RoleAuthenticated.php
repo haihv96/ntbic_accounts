@@ -2,17 +2,16 @@
 
 namespace App\Http\Middleware;
 
-use Closure;
 use App\Services\GuzzleHttp\AuthorizeRequestServiceInterface;
+use Closure;
 
-class RedirectIfAuthenticated
+class RoleAuthenticated
 {
     /**
      * Handle an incoming request.
      *
      * @param  \Illuminate\Http\Request $request
      * @param  \Closure $next
-     * @param  string|null $guard
      * @return mixed
      */
     protected $authorizeRequestService;
@@ -22,20 +21,19 @@ class RedirectIfAuthenticated
         $this->authorizeRequestService = $authorizeRequestService;
     }
 
-    public function handle($request, Closure $next, $guard = null)
+    public function handle($request, Closure $next, $source, $roleNames)
     {
         $response = $this->authorizeRequestService->send(
             'post',
-            config('sso.root_server.url.root') . '/api/role/get-role-names',
-            config('app.source_name')
+            config('sso.root_server.url.root') . '/api/role/has-any-roles',
+            $source, $roleNames
         );
 
-        if ($response->status == 200 && $response->data) {
-            if (in_array('admin', $response->data) || in_array('moderator', $response->data)) {
-                return redirect()->route('dashboards.index');
-            } else {
-                return redirect()->route('profiles.index');
-            }
+        if ($response->status != 200) {
+            return redirect()->route('sso.login_form');
+        }
+        if ($response->status == 200 && $response->data !== true) {
+            return redirect()->route('home');
         }
         return $next($request);
     }

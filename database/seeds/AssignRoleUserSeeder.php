@@ -18,5 +18,8 @@ class AssignRoleUserSeeder extends Seeder
 
         User::find(1)->assignRoles('ntbic_home', 'admin');
         User::find(2)->assignRoles('ntbic_home', 'moderator');
+
+        User::find(1)->assignRoles('ntbic_accounts', 'admin');
+        User::find(2)->assignRoles('ntbic_accounts', 'moderator');
     }
 }

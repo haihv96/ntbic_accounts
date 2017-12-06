@@ -17,6 +17,7 @@ class CreateRolePermissionTable extends Migration
         Schema::create('permissions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('vi_description')->default('');
             $table->string('source');
             $table->timestamps();
         });

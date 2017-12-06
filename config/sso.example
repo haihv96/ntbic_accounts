@@ -2,6 +2,7 @@
 return [
     'root_server' => [
         'url' => [
+            'root' => 'http://accounts.ntbic.dev',
             'assign_ticket' => 'http://accounts.ntbic.dev/api/sso-ticket/assign',
             'assign_token' => 'http://accounts.ntbic.dev/api/sso-ticket/assign-token',
             'logout' => 'http://accounts.ntbic.dev/api/sso-logout/assign-next-url'
@@ -14,5 +15,6 @@ return [
     'urls_to_logout' => [
         'http://accounts.ntbic.dev/sso/logout/',
         'http://csdl.ntbic.dev/sso/logout/',
-    ]
+    ],
+    'logout_url' => 'http://accounts.ntbic.dev/sso/logout?return_url=http://accounts.ntbic.dev/'
 ];

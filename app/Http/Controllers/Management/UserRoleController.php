@@ -23,6 +23,8 @@ class UserRoleController extends Controller
         $this->source_rpl = str_replace('-', '_', $request->source);
         $this->id = $request->user_role;
         $this->source = $request->source;
+        $this->middleware("permission:$this->source_rpl,read user_roles")->only('index');
+        $this->middleware("permission:$this->source_rpl,update user_roles")->only(['edit', 'update']);
     }
 
     public function index()

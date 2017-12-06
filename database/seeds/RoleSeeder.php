@@ -21,6 +21,10 @@ class RoleSeeder extends Seeder
             'admin', 'moderator'
         ];
 
+        $ntbicAccountsRoles = [
+            'admin', 'moderator'
+        ];
+
         foreach ($ntbicDatabaseRoles as $ntbicDatabaseRole) {
             Role::create([
                 'source' => 'ntbic_database', 'name' => $ntbicDatabaseRole
@@ -30,6 +34,12 @@ class RoleSeeder extends Seeder
         foreach ($ntbicHomeRoles as $ntbicHomeRole) {
             Role::create([
                 'source' => 'ntbic_home', 'name' => $ntbicHomeRole
+            ]);
+        }
+
+        foreach ($ntbicAccountsRoles as $ntbicAccountsRole) {
+            Role::create([
+                'source' => 'ntbic_accounts', 'name' => $ntbicAccountsRole
             ]);
         }
     }

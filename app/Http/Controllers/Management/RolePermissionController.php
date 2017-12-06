@@ -25,11 +25,15 @@ class RolePermissionController extends Controller
         $this->source = $request->source;
         $this->source_rpl = str_replace('-', '_', $request->source);
         $this->id = $request->role;
+        $this->middleware("permission:$this->source_rpl,read role_permissions")->only('index');
+        $this->middleware("permission:$this->source_rpl,store role_permissions")->only(['create', 'store']);
+        $this->middleware("permission:$this->source_rpl,update role_permissions")->only(['edit', 'update']);
+        $this->middleware("permission:$this->source_rpl,destroy role_permissions")->only('destroy');
     }
     
     public function index()
     {
-        $roles = Role::where('source', $this->source_rpl)->paginate(10);
+        $roles = $this->roleRepository->where('source', $this->source_rpl)->paginate(10);
         return view('management.role.index', compact('roles'));
     }
 

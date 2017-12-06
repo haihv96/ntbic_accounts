@@ -16,6 +16,9 @@ use App\Repositories\Permission\PermissionRepository;
 use App\Repositories\Role\RoleInterface;
 use App\Repositories\Role\RoleRepository;
 
+use App\Services\GuzzleHttp\AuthorizeRequestServiceInterface;
+use App\Services\GuzzleHttp\AuthorizeRequestService;
+
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 
@@ -42,5 +45,6 @@ class AppServiceProvider extends ServiceProvider
         App::bind(SsoTicketInterface::class, SsoTicketRepository::class);
         App::bind(PermissionInterface::class, PermissionRepository::class);
         App::bind(RoleInterface::class, RoleRepository::class);
+        App::bind(AuthorizeRequestServiceInterface::class, AuthorizeRequestService::class);
     }
 }

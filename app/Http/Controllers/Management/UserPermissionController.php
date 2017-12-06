@@ -23,6 +23,8 @@ class UserPermissionController extends Controller
         $this->source_rpl = str_replace('-', '_', $request->source);
         $this->id = $request->user_permission;
         $this->source = $request->source;
+        $this->middleware("permission:$this->source_rpl,read user_permissions")->only('index');
+        $this->middleware("permission:$this->source_rpl,update user_permissions")->only(['edit', 'update']);
     }
 
     public function index()
@@ -38,7 +40,7 @@ class UserPermissionController extends Controller
         $source_rpl = $this->source_rpl;
         $user = $this->userRepository->find($this->id);
         $permissions = Permission::where('source', $source_rpl)->get();
-        
+
         return view('management.user_permission.edit', compact('user', 'permissions', 'source_rpl'));
     }
 
@@ -48,6 +50,6 @@ class UserPermissionController extends Controller
         $user->permissions()->detach();
         $user->givePermissionsTo($this->source_rpl, $request->permissions);
 
-        return redirect()->route('user-permissions.index', ['source' => $this->source])->with('message','Update succefully');
+        return redirect()->route('user-permissions.index', ['source' => $this->source])->with('message', 'Update succefully');
     }
 }

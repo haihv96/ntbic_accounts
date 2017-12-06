@@ -30,18 +30,18 @@
                                     <a href="javascript:;">
                                         <span class="time">just now</span>
                                         <span class="details">
-                                                        <span class="label label-sm label-icon label-success">
-                                                            <i class="fa fa-plus"></i>
-                                                        </span> New user registered. </span>
+                                        <span class="label label-sm label-icon label-success">
+                                            <i class="fa fa-plus"></i>
+                                        </span> New user registered. </span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="javascript:;">
                                         <span class="time">3 mins</span>
                                         <span class="details">
-                                                        <span class="label label-sm label-icon label-danger">
-                                                            <i class="fa fa-bolt"></i>
-                                                        </span> Server #12 overloaded. </span>
+                                        <span class="label label-sm label-icon label-danger">
+                                            <i class="fa fa-bolt"></i>
+                                        </span> Server #12 overloaded. </span>
                                     </a>
                                 </li>
                                 <li>
@@ -56,36 +56,40 @@
                                     <a href="javascript:;">
                                         <span class="time">14 hrs</span>
                                         <span class="details">
-                                                        <span class="label label-sm label-icon label-info">
-                                                            <i class="fa fa-bullhorn"></i>
-                                                        </span> Application error. </span>
+                                            <span class="label label-sm label-icon label-info">
+                                                <i class="fa fa-bullhorn"></i>
+                                            </span> Application error.
+                                        </span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="javascript:;">
                                         <span class="time">2 days</span>
                                         <span class="details">
-                                                        <span class="label label-sm label-icon label-danger">
-                                                            <i class="fa fa-bolt"></i>
-                                                        </span> Database overloaded 68%. </span>
+                                            <span class="label label-sm label-icon label-danger">
+                                                <i class="fa fa-bolt"></i>
+                                            </span> Database overloaded 68%.
+                                        </span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="javascript:;">
                                         <span class="time">3 days</span>
                                         <span class="details">
-                                                        <span class="label label-sm label-icon label-danger">
-                                                            <i class="fa fa-bolt"></i>
-                                                        </span> A user IP blocked. </span>
+                                            <span class="label label-sm label-icon label-danger">
+                                                <i class="fa fa-bolt"></i>
+                                            </span> A user IP blocked.
+                                        </span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="javascript:;">
                                         <span class="time">4 days</span>
                                         <span class="details">
-                                                        <span class="label label-sm label-icon label-warning">
-                                                            <i class="fa fa-bell-o"></i>
-                                                        </span> Storage Server #4 not responding dfdfdfd. </span>
+                                            <span class="label label-sm label-icon label-warning">
+                                                <i class="fa fa-bell-o"></i>
+                                            </span> Storage Server #4 not responding dfdfdfd.
+                                        </span>
                                     </a>
                                 </li>
                                 <li>
@@ -326,28 +330,7 @@
                                 <i class="icon-user"></i> My Profile </a>
                         </li>
                         <li>
-                            <a href="app_calendar.html">
-                                <i class="icon-calendar"></i> My Calendar </a>
-                        </li>
-                        <li>
-                            <a href="app_inbox.html">
-                                <i class="icon-envelope-open"></i> My Inbox
-                                <span class="badge badge-danger"> 3 </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="app_todo.html">
-                                <i class="icon-rocket"></i> My Tasks
-                                <span class="badge badge-success"> 7 </span>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="page_user_lock_1.html">
-                                <i class="icon-lock"></i> Lock Screen </a>
-                        </li>
-                        <li>
-                            <a href="page_user_login_1.html">
+                            <a href={{config('sso.logout_url')}}>
                                 <i class="icon-key"></i> Log Out </a>
                         </li>
                     </ul>

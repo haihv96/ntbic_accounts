@@ -18,16 +18,20 @@ class AssignPermissionRoleSeeder extends Seeder
         $ntbicDatabaseEntries = [
             'chuyen_gia', 'doanh_nghiep',
             'san_pham', 'de_tai_du_an_cac_cap',
-            'phat_minh', 'don_vi_uom_tao', 'permission',
-            'role', 'user_roles', 'user_permissions'
+            'phat_minh', 'don_vi_uom_tao', 'role', 'permission',
+            'user_roles', 'user_permissions'
         ];
 
         $ntbicHomeEntries = [
             'tin_tuc', 'su_kien',
             'doi_tac', 'cong_nghe',
             'cau_hoi_thuong_gap', 'tuyen_dung',
-            'chuyen_gia', 'to_chuc', 'anh_sidebar',
-            'permission', 'role', 'user_roles', 'user_permissions'
+            'chuyen_gia', 'to_chuc', 'anh_sidebar', 'permission',
+            'role', 'user_roles', 'user_permissions'
+        ];
+
+        $ntbicAccountsEntries = [
+            'users', 'permission', 'role', 'user_roles', 'user_permissions'
         ];
 
         foreach ($ntbicDatabaseEntries as $ntbicDatabaseEntry) {
@@ -52,6 +56,18 @@ class AssignPermissionRoleSeeder extends Seeder
         foreach ($ntbicHomeEntries as $ntbicHomeEntry) {
             Role::findRole('ntbic_home', 'moderator')
                 ->givePermissionsTo('ntbic_home', "read $ntbicHomeEntry");
+        }
+
+        foreach ($ntbicAccountsEntries as $ntbicAccountsEntry) {
+            foreach ($actions as $action) {
+                Role::findRole('ntbic_accounts', 'admin')
+                    ->givePermissionsTo('ntbic_accounts', "$action $ntbicAccountsEntry");
+            }
+        }
+
+        foreach ($ntbicAccountsEntries as $ntbicAccountsEntry) {
+            Role::findRole('ntbic_accounts', 'moderator')
+                ->givePermissionsTo('ntbic_accounts', "read $ntbicAccountsEntry");
         }
     }
 }

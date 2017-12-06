@@ -13,26 +13,57 @@ class PermissionSeeder extends Seeder
 
     public function run()
     {
-        $actions = ['read', 'store', 'update', 'destroy'];
+        $actions = [
+            ['name' => 'read', 'vi_description' => 'đọc'],
+            ['name' => 'store', 'vi_description' => 'tạo mới'],
+            ['name' => 'update', 'vi_description' => 'chỉnh sửa'],
+            ['name' => 'destroy', 'vi_description' => 'xóa']
+        ];
+
         $ntbicDatabaseEntries = [
-            'chuyen_gia', 'doanh_nghiep',
-            'san_pham', 'de_tai_du_an_cac_cap',
-            'phat_minh', 'don_vi_uom_tao', 'permission',
-            'role', 'user_roles', 'user_permissions'
+            ['entry' => 'chuyen_gia', 'vi_description' => ''],
+            ['entry' => 'doanh_nghiep', 'vi_description' => ''],
+            ['entry' => 'de_tai_du_an_cac_cap', 'vi_description' => ''],
+            ['entry' => 'san_pham', 'vi_description' => ''],
+            ['entry' => 'phat_minh', 'vi_description' => ''],
+            ['entry' => 'don_vi_uom_tao', 'vi_description' => ''],
+            ['entry' => 'permission', 'vi_description' => ''],
+            ['entry' => 'role', 'vi_description' => ''],
+            ['entry' => 'user_roles', 'vi_description' => ''],
+            ['entry' => 'user_permissions', 'vi_description' => ''],
         ];
 
         $ntbicHomeEntries = [
-            'tin_tuc', 'su_kien',
-            'doi_tac', 'cong_nghe',
-            'cau_hoi_thuong_gap', 'tuyen_dung',
-            'chuyen_gia', 'to_chuc', 'anh_sidebar',
-            'permission', 'role', 'user_roles', 'user_permissions'
+            ['entry' => 'anh_sidebar', 'vi_description' => ''],
+            ['entry' => 'to_chuc', 'vi_description' => ''],
+            ['entry' => 'chuyen_gia', 'vi_description' => ''],
+            ['entry' => 'tuyen_dung', 'vi_description' => ''],
+            ['entry' => 'cau_hoi_thuong_gap', 'vi_description' => ''],
+            ['entry' => 'cong_nghe', 'vi_description' => ''],
+            ['entry' => 'doi_tac', 'vi_description' => ''],
+            ['entry' => 'su_kien', 'vi_description' => ''],
+            ['entry' => 'tin_tuc', 'vi_description' => ''],
+            ['entry' => 'permission', 'vi_description' => ''],
+            ['entry' => 'role', 'vi_description' => ''],
+            ['entry' => 'user_roles', 'vi_description' => ''],
+            ['entry' => 'user_permissions', 'vi_description' => ''],
+        ];
+
+        $ntbicAccountsEntries = [
+            ['entry' => 'users', 'vi_description' => ''],
+            ['entry' => 'permission', 'vi_description' => ''],
+            ['entry' => 'role', 'vi_description' => ''],
+            ['entry' => 'user_roles', 'vi_description' => ''],
+            ['entry' => 'user_permissions', 'vi_description' => ''],
         ];
 
         foreach ($ntbicDatabaseEntries as $ntbicDatabaseEntry) {
             foreach ($actions as $action) {
                 Permission::create([
-                    'source' => 'ntbic_database', 'name' => "$action $ntbicDatabaseEntry"
+                    'source' => 'ntbic_database',
+                    'name' => $action['name'] . ' ' . $ntbicDatabaseEntry['entry'],
+                    'vi_description' => $action['vi_description']
+                        . ' ' . $ntbicDatabaseEntry['vi_description']
                 ]);
             }
         }
@@ -40,9 +71,22 @@ class PermissionSeeder extends Seeder
         foreach ($ntbicHomeEntries as $ntbicHomeEntry) {
             foreach ($actions as $action) {
                 Permission::create([
-                    'source' => 'ntbic_home', 'name' => "$action $ntbicHomeEntry"
+                    'source' => 'ntbic_home',
+                    'name' => $action['name'] . ' ' . $ntbicHomeEntry['entry'],
+                    'vi_description' => $action['vi_description'] . ' ' . $ntbicHomeEntry['vi_description']
                 ]);
             }
         }
+
+        foreach ($ntbicAccountsEntries as $ntbicAccountsEntry) {
+            foreach ($actions as $action) {
+                Permission::create([
+                    'source' => 'ntbic_accounts',
+                    'name' => $action['name'] . ' ' . $ntbicAccountsEntry['entry'],
+                    'vi_description' => $action['vi_description'] . ' ' . $ntbicAccountsEntry['vi_description']
+                ]);
+            }
+        }
+
     }
 }

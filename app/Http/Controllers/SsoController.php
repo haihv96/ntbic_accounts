@@ -51,15 +51,14 @@ class SsoController extends Controller
     public function destroySession(Request $request)
     {
         $http = new GuzzleHttp\Client;
-        $request_access_token = $http->post(config('sso.root_server.url.logout'), [
+        $requestNextUrl = $http->post(config('sso.root_server.url.logout'), [
             'form_params' => [
                 'current_url' => config('app.url'),
                 'return_url' => $request->get('return_url')
             ],
             'http_errors' => false
         ]);
-        $response = json_decode((string)$request_access_token->getBody(), true);
-
+        $response = json_decode((string)$requestNextUrl->getBody(), true);
         if ($response['error']) {
             return redirect()->route('sso.login_form');
         } else {
