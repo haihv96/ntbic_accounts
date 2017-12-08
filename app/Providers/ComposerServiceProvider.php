@@ -15,12 +15,10 @@ class ComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         view()->composer('management.permission.*', 'App\Http\ViewComposers\SourceComposer');
-
         view()->composer('management.role.*', 'App\Http\ViewComposers\SourceComposer');
-
         view()->composer('management.user_role.*', 'App\Http\ViewComposers\SourceComposer');
-
         view()->composer('management.user_permission.*', 'App\Http\ViewComposers\SourceComposer');
+        view()->composer('management.*', 'App\Http\ViewComposers\SidebarComposer');
     }
 
     /**

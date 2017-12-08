@@ -18,7 +18,7 @@ class AssignPermissionRoleSeeder extends Seeder
         $ntbicDatabaseEntries = [
             'chuyen_gia', 'doanh_nghiep',
             'san_pham', 'de_tai_du_an_cac_cap',
-            'phat_minh', 'don_vi_uom_tao', 'role', 'permission',
+            'phat_minh', 'don_vi_uom_tao', 'role_permissions', 'permission',
             'user_roles', 'user_permissions'
         ];
 
@@ -27,11 +27,11 @@ class AssignPermissionRoleSeeder extends Seeder
             'doi_tac', 'cong_nghe',
             'cau_hoi_thuong_gap', 'tuyen_dung',
             'chuyen_gia', 'to_chuc', 'anh_sidebar', 'permission',
-            'role', 'user_roles', 'user_permissions'
+            'role_permissions', 'user_roles', 'user_permissions'
         ];
 
         $ntbicAccountsEntries = [
-            'users', 'permission', 'role', 'user_roles', 'user_permissions'
+            'users', 'permission', 'role_permissions', 'user_roles', 'user_permissions'
         ];
 
         foreach ($ntbicDatabaseEntries as $ntbicDatabaseEntry) {

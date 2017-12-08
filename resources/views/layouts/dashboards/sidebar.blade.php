@@ -15,10 +15,10 @@
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Search...">
                         <span class="input-group-btn">
-                                <a href="javascript:;" class="btn submit">
-                                    <i class="icon-magnifier"></i>
-                                </a>
-                            </span>
+                            <a href="javascript:;" class="btn submit">
+                                <i class="icon-magnifier"></i>
+                            </a>
+                        </span>
                     </div>
                 </form>
             </li>
@@ -33,16 +33,21 @@
                     <span class="arrow open"></span>
                 </a>
                 <ul class="sub-menu">
-                    <li class="nav-item  ">
-                        <a href="{{route('users.create')}}" class="nav-link ">
-                            <span class="title">New</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{route('users.index')}}" class="nav-link ">
-                            <span class="title">List users</span>
-                        </a>
-                    </li>
+                    @if($sidebarView['ntbic_accounts']['users']['store'])
+                        <li class="nav-item  ">
+                            <a href="{{route('users.create')}}" class="nav-link ">
+                                <span class="title">New</span>
+                            </a>
+                        </li>
+                    @endif
+
+                    @if($sidebarView['ntbic_accounts']['users']['read'])
+                        <li>
+                            <a href="{{route('users.index')}}" class="nav-link ">
+                                <span class="title">List users</span>
+                            </a>
+                        </li>
+                    @endif
                 </ul>
             </li>
             <li class="nav-item">
@@ -53,26 +58,37 @@
                     <span class="arrow open"></span>
                 </a>
                 <ul class="sub-menu">
-                    <li class="nav-item  ">
-                        <a href="{{url('management/ntbic-home/roles')}}" class="nav-link ">
-                            <span class="title">Roles</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{url('management/ntbic-home/permissions')}}" class="nav-link ">
-                            <span class="title">Permissions</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{url('management/ntbic-home/user-roles')}}" class="nav-link ">
-                            <span class="title">User Has Roles</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{url('management/ntbic-home/user-permissions')}}" class="nav-link ">
-                            <span class="title">User Has Permissions</span>
-                        </a>
-                    </li>
+                    @if($sidebarView['ntbic_home']['role_permissions']['read'])
+
+                        <li class="nav-item  ">
+                            <a href="{{url('management/ntbic-home/roles')}}" class="nav-link ">
+                                <span class="title">Roles</span>
+                            </a>
+                        </li>
+                    @endif
+                    @if($sidebarView['ntbic_home']['permission']['read'])
+                        <li>
+                            <a href="{{url('management/ntbic-home/permissions')}}" class="nav-link ">
+                                <span class="title">Permissions</span>
+                            </a>
+                        </li>
+                    @endif
+                    @if($sidebarView['ntbic_home']['user_roles']['read'])
+
+                        <li>
+                            <a href="{{url('management/ntbic-home/user-roles')}}" class="nav-link ">
+                                <span class="title">User Has Roles</span>
+                            </a>
+                        </li>
+                    @endif
+                    @if($sidebarView['ntbic_home']['user_permissions']['read'])
+
+                        <li>
+                            <a href="{{url('management/ntbic-home/user-permissions')}}" class="nav-link ">
+                                <span class="title">User Has Permissions</span>
+                            </a>
+                        </li>
+                    @endif
                 </ul>
             </li>
             <li class="nav-item">
@@ -83,26 +99,39 @@
                     <span class="arrow open"></span>
                 </a>
                 <ul class="sub-menu">
-                    <li class="nav-item  ">
-                        <a href="{{url('management/ntbic-database/roles')}}" class="nav-link ">
-                            <span class="title">Roles</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{url('management/ntbic-database/permissions')}}" class="nav-link ">
-                            <span class="title">Permissions</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{url('management/ntbic-database/user-roles')}}" class="nav-link ">
-                            <span class="title">User Has Roles</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{url('management/ntbic-database/user-permissions')}}" class="nav-link ">
-                            <span class="title">User Has Permissions</span>
-                        </a>
-                    </li>
+                    @if($sidebarView['ntbic_database']['role_permissions']['read'])
+
+                        <li class="nav-item  ">
+                            <a href="{{url('management/ntbic-database/roles')}}" class="nav-link ">
+                                <span class="title">Roles</span>
+                            </a>
+                        </li>
+                    @endif
+                    @if($sidebarView['ntbic_database']['permission']['read'])
+
+                        <li>
+                            <a href="{{url('management/ntbic-database/permissions')}}" class="nav-link ">
+                                <span class="title">Permissions</span>
+                            </a>
+                        </li>
+                    @endif
+                    @if($sidebarView['ntbic_database']['user_roles']['read'])
+
+                        <li>
+                            <a href="{{url('management/ntbic-database/user-roles')}}" class="nav-link ">
+                                <span class="title">User Has Roles</span>
+                            </a>
+                        </li>
+                    @endif
+
+                    @if($sidebarView['ntbic_database']['user_permissions']['read'])
+                        <li>
+                            <a href="{{url('management/ntbic-database/user-permissions')}}"
+                               class="nav-link ">
+                                <span class="title">User Has Permissions</span>
+                            </a>
+                        </li>
+                    @endif
                 </ul>
             </li>
         </ul>

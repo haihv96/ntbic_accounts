@@ -43,4 +43,17 @@ class AuthorizeRequestService implements AuthorizeRequestServiceInterface
         }
         return $results;
     }
+
+    public function checkPermissionInList($source, $name, array $permissions): bool
+    {
+        foreach ($permissions as $permission) {
+            if (!is_array($permission)) {
+                return false;
+            }
+            if ($permission['source'] == $source && $permission['name'] == $name) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

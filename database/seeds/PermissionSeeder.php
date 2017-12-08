@@ -28,7 +28,7 @@ class PermissionSeeder extends Seeder
             ['entry' => 'phat_minh', 'vi_description' => ''],
             ['entry' => 'don_vi_uom_tao', 'vi_description' => ''],
             ['entry' => 'permission', 'vi_description' => ''],
-            ['entry' => 'role', 'vi_description' => ''],
+            ['entry' => 'role_permissions', 'vi_description' => ''],
             ['entry' => 'user_roles', 'vi_description' => ''],
             ['entry' => 'user_permissions', 'vi_description' => ''],
         ];
@@ -44,7 +44,7 @@ class PermissionSeeder extends Seeder
             ['entry' => 'su_kien', 'vi_description' => ''],
             ['entry' => 'tin_tuc', 'vi_description' => ''],
             ['entry' => 'permission', 'vi_description' => ''],
-            ['entry' => 'role', 'vi_description' => ''],
+            ['entry' => 'role_permissions', 'vi_description' => ''],
             ['entry' => 'user_roles', 'vi_description' => ''],
             ['entry' => 'user_permissions', 'vi_description' => ''],
         ];
@@ -52,7 +52,7 @@ class PermissionSeeder extends Seeder
         $ntbicAccountsEntries = [
             ['entry' => 'users', 'vi_description' => ''],
             ['entry' => 'permission', 'vi_description' => ''],
-            ['entry' => 'role', 'vi_description' => ''],
+            ['entry' => 'role_permissions', 'vi_description' => ''],
             ['entry' => 'user_roles', 'vi_description' => ''],
             ['entry' => 'user_permissions', 'vi_description' => ''],
         ];

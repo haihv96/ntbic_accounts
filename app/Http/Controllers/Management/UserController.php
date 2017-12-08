@@ -18,10 +18,10 @@ class UserController extends Controller
     {
         $this->userRepository = $userRepository;
         $this->roleRepository = $roleRepository;
-        $this->middleware('permission:accounts,read users')->only('index');
-        $this->middleware('permission:accounts,store users')->only(['create', 'store']);
-        $this->middleware('permission:accounts,update users')->only(['edit', 'update']);
-        $this->middleware('permission:accounts,destroy users')->only('destroy');
+        $this->middleware('permission:ntbic_accounts,read users')->only('index');
+        $this->middleware('permission:ntbic_accounts,store users')->only(['create', 'store']);
+        $this->middleware('permission:ntbic_accounts,update users')->only(['edit', 'update']);
+        $this->middleware('permission:ntbic_accounts,destroy users')->only('destroy');
     }
 
     public function index()
