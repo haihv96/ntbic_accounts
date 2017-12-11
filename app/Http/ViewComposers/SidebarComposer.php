@@ -68,16 +68,6 @@ class SidebarComposer
                     'read' => $authorizeRequestService->checkPermissionInList(
                         'ntbic_home', 'read permission', $homePermissions)
                 ],
-                'role' => [
-                    'read' => $authorizeRequestService->checkPermissionInList(
-                        'ntbic_home', 'read role', $homePermissions),
-                    'store' => $authorizeRequestService->checkPermissionInList(
-                        'ntbic_home', 'store role', $homePermissions),
-                    'update' => $authorizeRequestService->checkPermissionInList(
-                        'ntbic_home', 'update role', $homePermissions),
-                    'destroy' => $authorizeRequestService->checkPermissionInList(
-                        'ntbic_home', 'destroy role', $homePermissions)
-                ],
                 'user_permissions' => [
                     'read' => $authorizeRequestService->checkPermissionInList(
                         'ntbic_home', 'read user_permissions', $homePermissions),
@@ -107,17 +97,6 @@ class SidebarComposer
                         'ntbic_database', 'read permission', $databasePermissions),
                     'update' => $authorizeRequestService->checkPermissionInList(
                         'ntbic_database', 'update permission', $databasePermissions)
-                ],
-                'role' => [
-                    'read' => $authorizeRequestService->checkPermissionInList(
-                        'ntbic_database', 'read role', $databasePermissions),
-                    'store' => $authorizeRequestService->checkPermissionInList(
-                        'ntbic_database', 'store role', $databasePermissions),
-                    'update' => $authorizeRequestService->checkPermissionInList(
-                        'ntbic_database', 'update role', $databasePermissions),
-
-                    'destroy' => $authorizeRequestService->checkPermissionInList(
-                        'ntbic_database', 'destroy role', $databasePermissions)
                 ],
                 'user_permissions' => [
                     'read' => $authorizeRequestService->checkPermissionInList(
