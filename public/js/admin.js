@@ -60,35 +60,49 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ([
-/* 0 */
+/* 0 */,
+/* 1 */,
+/* 2 */,
+/* 3 */,
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(1);
-__webpack_require__(2);
-module.exports = __webpack_require__(3);
+module.exports = __webpack_require__(5);
 
 
 /***/ }),
-/* 1 */
-/***/ (function(module, exports) {
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
 
-
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
+__webpack_require__(6);
 
 /***/ }),
-/* 3 */
+/* 6 */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+$('.delete-modal').click(function () {
+    var id = $(this).data("id");
+    var pathname = window.location.pathname + '/';
+    var url_delete = pathname + id;
+    $('#delete').click(function () {
+        $.ajax({
+            type: 'delete',
+            dataType: 'json',
+            url: url_delete,
+            data: {
+                '_token': $('input[name=_token]').val(),
+                'id': id
+            },
+            success: function success() {
+                location.reload();
+            }
+        });
+    });
+});
 
 /***/ })
 /******/ ]);

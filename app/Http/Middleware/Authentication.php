@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use App\Services\GuzzleHttp\AuthorizeRequestServiceInterface;
 
-class RedirectIfAuthenticated
+class Authentication
 {
     /**
      * Handle an incoming request.
@@ -22,20 +22,15 @@ class RedirectIfAuthenticated
         $this->authorizeRequestService = $authorizeRequestService;
     }
 
-    public function handle($request, Closure $next, $guard = null)
+    public function handle($request, Closure $next)
     {
         $response = $this->authorizeRequestService->send(
-            'post',
-            config('sso.root_server.url.root') . '/api/role/get-role-names',
-            config('app.source_name')
+            'get',
+            config('sso.root_server.url.root') . '/api/check-authenticate'
         );
 
         if ($response->status == 200 && $response->data) {
-            if (in_array('admin', $response->data) || in_array('moderator', $response->data)) {
-                return redirect()->route('dashboards.index');
-            } else {
-                return redirect()->route('home');
-            }
+            session(['current_user' => (object)$response->data]);
         }
         return $next($request);
     }
