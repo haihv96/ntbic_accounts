@@ -54,6 +54,6 @@
         </div>
         {!! Html::script('themes/metronic/assets/js/jquery.min.js') !!}
         {!! Html::script('themes/metronic/assets/js/bootstrap.min.js') !!}
-        {!! Html::script('js/app.js') !!}
+        {!! Html::script('js/app.scss') !!}
     </body>
 </html>
