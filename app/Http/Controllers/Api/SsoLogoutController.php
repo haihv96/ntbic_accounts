@@ -23,8 +23,12 @@ class SsoLogoutController extends Controller
 
             }
         }
-        return response()->json(['error' => false,
+        return response()->json([
+            'error' => false,
             'message' => null,
-            'data' => ['next_url' => $nextUrl]]);
+            'data' => [
+                'next_url' => $nextUrl
+            ]
+        ]);
     }
 }

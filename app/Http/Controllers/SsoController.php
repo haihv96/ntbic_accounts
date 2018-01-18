@@ -63,7 +63,7 @@ class SsoController extends Controller
             return redirect()->route('sso.login_form');
         } else {
             session(['access_token' => null, 'current_user' => null]);
-            return redirect('/');
+            return redirect($response['data']['next_url']);
         }
     }
 }

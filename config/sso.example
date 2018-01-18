@@ -13,8 +13,8 @@ return [
         'http://csdl.ntbic.dev/sso/set-session/',
     ],
     'urls_to_logout' => [
-        'http://accounts.ntbic.dev/sso/logout/',
-        'http://csdl.ntbic.dev/sso/logout/',
+        'http://accounts.ntbic.dev/sso/logout',
+        'http://csdl.ntbic.dev/sso/logout',
     ],
     'logout_url' => 'http://accounts.ntbic.dev/sso/logout?return_url=http://accounts.ntbic.dev/'
 ];
