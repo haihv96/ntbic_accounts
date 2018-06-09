@@ -11,7 +11,7 @@
                 <div class=" service-item">
                     <div class="header">
                         <img class="icon" src="{{asset('/images/account.png')}}" />
-                        <a href="http://accounts.ntbic.com/sso/login">
+                        <a href="http://accounts.ntbic.local/sso/login">
                             <h3 class="text-center">
                                 Ntbic Accounts
                             </h3>
@@ -26,7 +26,7 @@
                 <div class=" service-item">
                     <div class="header">
                         <img class="icon" src="{{asset('/images/database.png')}}" />
-                        <a href="http://sso.csdl.ntbic.com/sso/login">
+                        <a href="http://csdl_v2.ntbic.local/sso/login">
                             <h3 class="text-center">
                                 Ntbic Database
                             </h3>

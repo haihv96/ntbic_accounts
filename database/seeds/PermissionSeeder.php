@@ -21,12 +21,11 @@ class PermissionSeeder extends Seeder
         ];
 
         $ntbicDatabaseEntries = [
-            ['entry' => 'chuyen_gia', 'vi_description' => ''],
-            ['entry' => 'doanh_nghiep', 'vi_description' => ''],
-            ['entry' => 'de_tai_du_an_cac_cap', 'vi_description' => ''],
-            ['entry' => 'san_pham', 'vi_description' => ''],
-            ['entry' => 'phat_minh', 'vi_description' => ''],
-            ['entry' => 'don_vi_uom_tao', 'vi_description' => ''],
+            ['entry' => 'profiles', 'vi_description' => ''],
+            ['entry' => 'companies', 'vi_description' => ''],
+            ['entry' => 'projects', 'vi_description' => ''],
+            ['entry' => 'products', 'vi_description' => ''],
+            ['entry' => 'patents', 'vi_description' => ''],
             ['entry' => 'permission', 'vi_description' => ''],
             ['entry' => 'role_permissions', 'vi_description' => ''],
             ['entry' => 'user_roles', 'vi_description' => ''],

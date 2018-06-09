@@ -16,27 +16,27 @@
                     <table class="table table-striped table-bordered table-hover table-checkable order-column"
                            id="sample_1">
                         <thead>
-                        <tr>
-                            <th> STT</th>
-                            <th> Permissions</th>
-                            <th> Sửa</th>
-                        </tr>
+                            <tr>
+                                <th> STT</th>
+                                <th> Permissions</th>
+                                <th> Sửa</th>
+                            </tr>
                         </thead>
                         <tbody>
-                        @foreach($permissions as $key => $item)
-                            <tr class="odd gradeX">
-                                <td>{{$key+1}}</td>
-                                <td>{{$item->name}}</td>
-                                @if($sidebarView[$source_rpl]['permission']['update'])
-                                    <td class="center">
-                                        <div>
-                                            <a href="{{route('permissions.edit', ['source' => $source, 'id' => $item->id])}}"
-                                               class="edit" data-id="{{$item->id}}"><span
-                                                        class="fa fa-pencil-square"></span></a></div>
-                                    </td>
-                                @endif
-                            </tr>
-                        @endforeach
+                            @foreach($permissions as $key => $item)
+                                <tr class="odd gradeX">
+                                    <td>{{$key+1}}</td>
+                                    <td>{{$item->name}}</td>
+                                    @if($sidebarView[$source_rpl]['permission']['update'])
+                                        <td class="center">
+                                            <div>
+                                                <a href="{{route('permissions.edit', ['source' => $source, 'id' => $item->id])}}"
+                                                   class="edit" data-id="{{$item->id}}"><span
+                                                            class="fa fa-pencil-square"></span></a></div>
+                                        </td>
+                                    @endif
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                     {!! $permissions->links() !!}

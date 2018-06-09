@@ -66,7 +66,9 @@ class SidebarComposer
             'ntbic_home' => [
                 'permission' => [
                     'read' => $authorizeRequestService->checkPermissionInList(
-                        'ntbic_home', 'read permission', $homePermissions)
+                        'ntbic_home', 'read permission', $homePermissions),
+                    'update' => $authorizeRequestService->checkPermissionInList(
+                        'ntbic_home', 'update permission', $homePermissions)
                 ],
                 'user_permissions' => [
                     'read' => $authorizeRequestService->checkPermissionInList(

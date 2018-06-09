@@ -16,9 +16,9 @@ class AssignPermissionUserSeeder extends Seeder
         $actions = ['read', 'store', 'update', 'destroy'];
 
         $ntbicDatabaseEntries = [
-            'chuyen_gia', 'doanh_nghiep',
-            'san_pham', 'de_tai_du_an_cac_cap',
-            'phat_minh', 'don_vi_uom_tao'
+            'profiles', 'companies',
+            'products', 'projects',
+            'patents',
         ];
 
         $ntbicHomeEntries = [
